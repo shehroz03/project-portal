@@ -36,8 +36,7 @@ export default function SignupPage() {
       setError(error.message);
       setLoading(false);
     } else {
-      setSubmitted(true);
-      setLoading(false);
+      router.push('/dashboard');
     }
   };
 
