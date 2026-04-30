@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -15,6 +15,24 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
   const supabase = createClient();
+
+  useEffect(() => {
+    // Force remove browser/extension eye icons
+    const cleanIcons = () => {
+      const intruders = document.querySelectorAll('form button:not([type="submit"]):not([data-our-icon])');
+      intruders.forEach(el => {
+        (el as HTMLElement).style.setProperty('display', 'none', 'important');
+      });
+      // Targeted CSS for browser icons
+      const style = document.createElement('style');
+      style.innerHTML = `
+        input::-ms-reveal, input::-ms-clear, input::-webkit-password-toggle-button { display: none !important; }
+      `;
+      document.head.appendChild(style);
+    };
+    const interval = setInterval(cleanIcons, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,6 +86,7 @@ export default function LoginPage() {
                 required
                 name="login-email"
                 autoComplete="off"
+                suppressHydrationWarning
                 className="auth-input w-full pl-12 pr-4 py-4 bg-gray-50 dark:bg-gray-800 border-none rounded-2xl focus:ring-2 focus:ring-purple-500 outline-none transition-all"
                 placeholder="email@example.com"
                 value={email}
@@ -85,6 +104,7 @@ export default function LoginPage() {
                 required
                 name="login-password"
                 autoComplete="new-password"
+                suppressHydrationWarning
                 className="auth-input w-full pl-12 pr-12 py-4 bg-gray-50 dark:bg-gray-800 border-none rounded-2xl focus:ring-2 focus:ring-purple-500 outline-none transition-all"
                 placeholder="••••••••"
                 value={password}
@@ -92,8 +112,9 @@ export default function LoginPage() {
               />
               <button 
                 type="button"
+                data-our-icon="true"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-purple-600 transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-purple-600 transition-colors z-20"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>

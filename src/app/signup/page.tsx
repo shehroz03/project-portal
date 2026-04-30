@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -15,6 +15,26 @@ export default function SignupPage() {
   const [submitted, setSubmitted] = useState(false);
   const router = useRouter();
   const supabase = createClient();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Force remove browser/extension eye icons
+    const cleanIcons = () => {
+      const intruders = document.querySelectorAll('form button:not([type="submit"]):not([data-our-icon])');
+      intruders.forEach(el => {
+        (el as HTMLElement).style.setProperty('display', 'none', 'important');
+      });
+      // Targeted CSS for browser icons
+      const style = document.createElement('style');
+      style.innerHTML = `
+        input::-ms-reveal, input::-ms-clear, input::-webkit-password-toggle-button { display: none !important; }
+      `;
+      document.head.appendChild(style);
+    };
+    const interval = setInterval(cleanIcons, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,7 +79,7 @@ export default function SignupPage() {
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950">
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-gray-800 animate-fade-in">
         <div>
-          <h2 className="text-center text-3xl font-black">Join BSt</h2>
+          <h2 className="text-center text-3xl font-black">Join BST HUB</h2>
           <p className="text-center text-sm text-gray-500 mt-2">Professional academic help at your fingertips</p>
         </div>
         {error && <div className="p-4 bg-red-50 text-red-600 rounded-2xl text-sm font-bold text-center">{error}</div>}
@@ -71,6 +91,7 @@ export default function SignupPage() {
               type="text"
               required
               autoComplete="off"
+              suppressHydrationWarning
               className="auth-input appearance-none relative block w-full px-4 py-4 bg-gray-50 dark:bg-gray-800 border-none rounded-2xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
               placeholder="Full Name"
               value={fullName}
@@ -81,6 +102,7 @@ export default function SignupPage() {
               required
               name="signup-email"
               autoComplete="off"
+              suppressHydrationWarning
               className="auth-input appearance-none relative block w-full px-4 py-4 bg-gray-50 dark:bg-gray-800 border-none rounded-2xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
               placeholder="Email address"
               value={email}
@@ -92,6 +114,7 @@ export default function SignupPage() {
                 required
                 name="signup-password"
                 autoComplete="new-password"
+                suppressHydrationWarning
                 className="auth-input appearance-none relative block w-full px-4 py-4 bg-gray-50 dark:bg-gray-800 border-none rounded-2xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                 placeholder="Password"
                 value={password}
@@ -99,8 +122,9 @@ export default function SignupPage() {
               />
               <button 
                 type="button"
+                data-our-icon="true"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-4 text-gray-400 hover:text-purple-600 transition-colors"
+                className="absolute right-4 top-4 text-gray-400 hover:text-purple-600 transition-colors z-20"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>

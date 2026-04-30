@@ -12,7 +12,7 @@ export default function SoftwareHouseButton() {
       animate={{ x: 0, opacity: 1 }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-8 left-8 z-[9999] flex items-center gap-3 px-6 py-4 bg-gray-900 text-white rounded-2xl shadow-2xl border border-white/10 group overflow-hidden"
+      className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-[9999] hidden sm:flex items-center gap-3 px-4 py-3 md:px-6 md:py-4 bg-gray-900 text-white rounded-2xl shadow-2xl border border-white/10 group overflow-hidden"
     >
       {/* Glossy Overlay */}
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>

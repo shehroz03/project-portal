@@ -56,30 +56,40 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Mini-WAF: Block common attack patterns in URL
-  const suspiciousPatterns = ['<script', 'javascript:', 'union select', 'drop table', '1=1', '--']
-  const url = request.nextUrl.pathname.toLowerCase()
-  if (suspiciousPatterns.some(p => url.includes(p))) {
-    return new NextResponse('Access Denied: Security Policy', { status: 403 })
-  }
-
-  // Protect Dashboard & Admin routes
   const isAuthPage = request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/signup')
   const isProtectedPage = request.nextUrl.pathname.startsWith('/dashboard') || 
                           request.nextUrl.pathname.startsWith('/submit') || 
                           request.nextUrl.pathname.startsWith('/admin')
 
+  // Redirect logic
   if (!user && isProtectedPage) {
-    return NextResponse.redirect(new URL('/login', request.url))
+    const redirectResponse = NextResponse.redirect(new URL('/login', request.url))
+    // Copy cookies from 'response' (which Supabase might have updated) to the new redirectResponse
+    response.cookies.getAll().forEach(cookie => {
+      redirectResponse.cookies.set(cookie.name, cookie.value)
+    })
+    return redirectResponse
   }
 
-  // Admin access check (Extra Security)
-  if (request.nextUrl.pathname.startsWith('/admin')) {
-    const isMaster = user?.email === 'miansabmi7@gmail.com';
-    const isAdminRole = user?.app_metadata?.role === 'admin' || user?.user_metadata?.role === 'admin';
+  if (user && isAuthPage) {
+    const redirectResponse = NextResponse.redirect(new URL('/dashboard', request.url))
+    response.cookies.getAll().forEach(cookie => {
+      redirectResponse.cookies.set(cookie.name, cookie.value)
+    })
+    return redirectResponse
+  }
+
+  // Admin access check
+  if (user && request.nextUrl.pathname.startsWith('/admin')) {
+    const isMaster = user.email === 'miansabmi7@gmail.com';
+    const isAdminRole = user.app_metadata?.role === 'admin' || user.user_metadata?.role === 'admin';
     
     if (!isMaster && !isAdminRole) {
-      return NextResponse.redirect(new URL('/dashboard', request.url))
+      const redirectResponse = NextResponse.redirect(new URL('/dashboard', request.url))
+      response.cookies.getAll().forEach(cookie => {
+        redirectResponse.cookies.set(cookie.name, cookie.value)
+      })
+      return redirectResponse
     }
   }
 

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* FORCE HIDE NEXT.JS DEV BADGE */
+/* FORCE HIDE NEXT.JS DEV INDICATOR */
 next-js-internal-feedback-indicator,
 #__next-build-watcher,
 .nextjs-static-indicator,
@@ -10,6 +10,30 @@ next-js-internal-feedback-indicator,
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+/* HIDE NATIVE BROWSER PASSWORD TOGGLE */
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-password-toggle-button {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+input::-webkit-contacts-auto-fill-button, 
+input::-webkit-credentials-auto-fill-button,
+[data-password-manager-icon],
+.lastpass-icon,
+.dashlane-icon,
+.bitwarden-icon {
+  visibility: hidden !important;
+  display: none !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 @theme inline {

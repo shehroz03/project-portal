@@ -5,11 +5,13 @@ import {
   BookOpen, LogOut, LayoutDashboard, Lightbulb, 
   PlusCircle, ShieldCheck, User, Globe, Menu, X 
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/context/LanguageContext';
+
+const supabaseClient = createClient();
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -17,7 +19,8 @@ export default function Navbar() {
   const [user, setUser] = useState<any>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const supabase = createClient();
+  const supabase = supabaseClient;
+
 
   useEffect(() => {
     const getUser = async () => {
@@ -68,10 +71,10 @@ export default function Navbar() {
               <BookOpen size={22} className="text-white" />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-black text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500 leading-none">
-                BSt Studio
+              <span className="font-black text-xl md:text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500 leading-none">
+                BST HUB
               </span>
-              <span className="text-[8px] font-black uppercase tracking-[0.4em] text-gray-400 mt-1">Academic Supremacy</span>
+              <span className="text-[7px] md:text-[8px] font-black uppercase tracking-[0.4em] text-gray-400 mt-1">Academic Supremacy</span>
             </div>
           </Link>
 

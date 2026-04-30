@@ -18,10 +18,10 @@ export default function Home() {
   ];
 
   const services = [
-    { title: 'Assignment Help', desc: 'Custom solved assignments for all international boards and university curricula.', icon: FileText, color: 'bg-blue-500/10 text-blue-500' },
-    { title: 'FYP & Thesis', desc: 'End-to-end support for Final Year Projects and research thesis with documentation.', icon: Code2, color: 'bg-purple-500/10 text-purple-500' },
-    { title: 'Essay & Research', desc: 'Professional academic writing, research papers, and case studies for global standards.', icon: GraduationCap, color: 'bg-green-500/10 text-green-500' },
-    { title: 'Project Ideas', desc: 'Unique, innovative project ideas tailored to your degree and specialization.', icon: Lightbulb, color: 'bg-yellow-500/10 text-yellow-500' },
+    { title: 'Assignments', desc: 'Custom solved assignments for all international boards and university curricula.', icon: FileText, color: 'bg-blue-500/10 text-blue-500' },
+    { title: 'FYP & Projects', desc: 'End-to-end support for Final Year Projects with full code and documentation.', icon: Code2, color: 'bg-purple-500/10 text-purple-500' },
+    { title: 'Thesis & Research', desc: 'Professional academic writing, thesis documentation, and research paper assistance.', icon: GraduationCap, color: 'bg-green-500/10 text-green-500' },
+    { title: 'Documentation & Ideas', desc: 'Unique project ideas and comprehensive documentation services for all degrees.', icon: Lightbulb, color: 'bg-yellow-500/10 text-yellow-500' },
   ];
 
   const testimonials = [
@@ -56,7 +56,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9]"
+            className="text-5xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9] px-2"
           >
             {t.hero.title.split(' ')[0]} <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400">
@@ -98,10 +98,10 @@ export default function Home() {
             transition={{ delay: 1 }}
             className="mt-20 pt-10 border-t border-gray-100 dark:border-gray-800"
           >
-            <p className="text-xs font-black uppercase tracking-[0.5em] mb-8 text-gray-400">Supporting Students From</p>
-            <div className="flex flex-wrap justify-center gap-10 md:gap-20 grayscale opacity-70">
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] mb-8 text-gray-400">Supporting Students From</p>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-10 md:gap-x-20 grayscale opacity-70 px-4">
               {['OXFORD', 'STANFORD', 'NUST', 'UET', 'MONASH', 'LUMS'].map(uni => (
-                <span key={uni} className="font-black text-2xl tracking-tighter">{uni}</span>
+                <span key={uni} className="font-black text-xl md:text-2xl tracking-tighter">{uni}</span>
               ))}
             </div>
           </motion.div>
@@ -118,11 +118,11 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="p-10 bg-white dark:bg-gray-900/50 backdrop-blur-xl rounded-[3rem] border border-gray-100 dark:border-gray-800 shadow-2xl shadow-gray-200/20 dark:shadow-none text-center group hover:border-purple-500/30 transition-all"
+              className="p-6 md:p-10 bg-white dark:bg-gray-900/50 backdrop-blur-xl rounded-[2rem] md:rounded-[3rem] border border-gray-100 dark:border-gray-800 shadow-2xl shadow-gray-200/20 dark:shadow-none text-center group hover:border-purple-500/30 transition-all"
             >
-              <stat.icon size={32} className="mx-auto mb-6 text-purple-600 group-hover:scale-110 transition-transform" />
-              <div className="text-4xl font-black mb-2 tracking-tighter">{stat.value}</div>
-              <div className="text-[10px] text-gray-400 font-black uppercase tracking-[0.3em]">{stat.label}</div>
+              <stat.icon size={28} className="mx-auto mb-4 md:mb-6 text-purple-600 group-hover:scale-110 transition-transform" />
+              <div className="text-3xl md:text-4xl font-black mb-1 md:mb-2 tracking-tighter">{stat.value}</div>
+              <div className="text-[9px] md:text-[10px] text-gray-400 font-black uppercase tracking-[0.3em]">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -130,8 +130,8 @@ export default function Home() {
 
       {/* How It Works */}
       <section className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">How It Works</h2>
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 px-2">How It Works</h2>
           <p className="text-gray-500 font-medium">Simple. Transparent. Professional.</p>
         </div>
         <div className="grid md:grid-cols-4 gap-8 relative">
@@ -160,8 +160,8 @@ export default function Home() {
 
       {/* Services Section */}
       <section className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">Our Expertise</h2>
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 px-2">Our Expertise</h2>
           <p className="text-gray-500 font-medium">Standardized support for all academic levels.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -192,8 +192,8 @@ export default function Home() {
       {/* Testimonials */}
       <section className="bg-gray-900 py-32">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white">Global Student Stories</h2>
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white px-2">Global Student Stories</h2>
             <p className="text-gray-400 font-medium">Real feedback from students at top institutions.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -229,7 +229,7 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600 rounded-full blur-[150px] opacity-20 -mr-48 -mt-48"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600 rounded-full blur-[150px] opacity-20 -ml-48 -mb-48"></div>
           
-          <h2 className="text-5xl md:text-7xl font-black mb-8 relative tracking-tighter leading-[0.9]">{t.cta.title}</h2>
+          <h2 className="text-4xl md:text-7xl font-black mb-8 relative tracking-tighter leading-[0.9] px-4">{t.cta.title}</h2>
           <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-12 relative font-medium">
             {t.cta.subtitle}
           </p>

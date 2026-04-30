@@ -21,22 +21,23 @@ export default function TechBackground() {
 
   useEffect(() => {
     setMounted(true);
-    
-    // KILL THE "N" LOGO (Dev Indicator) AT RUNTIME
-    const hideDevBadge = () => {
-      const elements = document.querySelectorAll('next-js-internal-feedback-indicator, #__next-build-watcher, .nextjs-static-indicator');
-      elements.forEach(el => (el as HTMLElement).style.display = 'none');
-      
-      const shadowHosts = document.querySelectorAll('*');
-      shadowHosts.forEach(host => {
-        if (host.shadowRoot) {
-          const badge = host.shadowRoot.querySelector('.nextjs-static-indicator, [data-nextjs-toast]');
-          if (badge) (badge as HTMLElement).style.display = 'none';
+
+    const removeDevBadge = () => {
+      // Direct DOM
+      const badges = document.querySelectorAll('next-js-internal-feedback-indicator');
+      badges.forEach(b => (b as HTMLElement).style.setProperty('display', 'none', 'important'));
+
+      // Shadow DOM search
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(el => {
+        if (el.shadowRoot) {
+          const indicator = el.shadowRoot.querySelector('.nextjs-static-indicator, [data-nextjs-toast]');
+          if (indicator) (indicator as HTMLElement).style.setProperty('display', 'none', 'important');
         }
       });
     };
 
-    const interval = setInterval(hideDevBadge, 500);
+    const interval = setInterval(removeDevBadge, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -78,9 +79,12 @@ export default function TechBackground() {
     return (
       <div className="fixed inset-0 -z-50 bg-[#020617] overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:64px_64px] opacity-10"></div>
-        <div className="absolute inset-0 flex justify-around gap-4 opacity-[0.08]">
+        <div className="absolute inset-0 flex justify-around gap-4 opacity-[0.08] px-4">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex-1 font-mono text-[9px] overflow-hidden border border-slate-800/30 bg-slate-900/40 p-3 rounded-2xl">
+            <div 
+              key={i} 
+              className={`flex-1 font-mono text-[9px] overflow-hidden border border-slate-800/30 bg-slate-900/40 p-3 rounded-2xl ${i > 0 ? 'hidden md:block' : ''}`}
+            >
               <div className="space-y-1 animate-terminal-scroll" style={{ animationDuration: `${25 + i * 5}s` }}>
                 {[...Array(30)].map((_, idx) => (
                   <div key={idx} className="flex gap-2 text-slate-600">

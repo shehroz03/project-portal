@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function WhatsAppButton() {
   const phoneNumber = '923144219130'; // International format
-  const message = 'Hello BSt Studio, I need assistance with my project.';
+  const message = 'Hello BST HUB, I need assistance with my project.';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
@@ -15,7 +15,7 @@ export default function WhatsAppButton() {
       animate={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-8 right-8 z-[9999] flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl shadow-[#25D366]/40 group"
+      className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[9999] flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-2xl shadow-[#25D366]/40 group"
     >
       <svg 
         viewBox="0 0 24 24" 

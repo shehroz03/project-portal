@@ -7,15 +7,15 @@ export const translations = {
       admin: "Command Center",
       logout: "Sign Out",
       login: "Login",
-      signup: "Join BSt",
+      signup: "Join BST HUB",
       ideas: "Global Ideas",
       submit: "Submit Project"
     },
     hero: {
-      title: "Academic Supremacy",
-      subtitle: "Join 12,000+ students worldwide who trust BSt for premium assignments, complex FYPs, and expert research guidance.",
-      badge: "GLOBAL ACADEMIC EXCELLENCE",
-      ctaPrimary: "Start Your Project",
+      title: "Academic Excellence Hub",
+      subtitle: "Your all-in-one destination for premium assignments, complex FYPs, theses, documentation, and expert project ideas.",
+      badge: "BST HUB - STUDENT SUCCESS PORTAL",
+      ctaPrimary: "Submit Your Task",
       ctaSecondary: "Browse Ideas"
     },
     dashboard: {
@@ -58,8 +58,8 @@ export const translations = {
       submitBtn: "Transmit Request"
     },
     cta: {
-      title: "Ready to Elevate Your Grades?",
-      subtitle: "Join the elite circle of students who prioritize quality and expertise. Get a professional quote for your academic project today.",
+      title: "Ready to Master Your Academics?",
+      subtitle: "Get professional help for your assignments, FYP projects, thesis documentation, and more. Experience the BST HUB difference.",
       button: "Get Started Now"
     },
     common: {
@@ -90,15 +90,15 @@ export const translations = {
       admin: "Centro de Mando",
       logout: "Cerrar Sesión",
       login: "Iniciar Sesión",
-      signup: "Unirse a BSt",
+      signup: "Unirse a BST HUB",
       ideas: "Ideas Globales",
       submit: "Enviar Proyecto"
     },
     hero: {
-      title: "Supremacía Académica",
-      subtitle: "Únase a más de 12,000 estudiantes en todo el mundo que confían en BSt para tareas premium, proyectos complejos y orientación experta.",
-      badge: "EXCELENCIA ACADÉMICA GLOBAL",
-      ctaPrimary: "Iniciar Proyecto",
+      title: "Hub de Excelencia Académica",
+      subtitle: "Tu destino todo en uno para tareas premium, proyectos complejos de fin de grado, tesis y documentación experta.",
+      badge: "BST HUB - PORTAL DE ÉXITO ESTUDIANTIL",
+      ctaPrimary: "Enviar Tarea",
       ctaSecondary: "Explorar Ideas"
     },
     dashboard: {
@@ -173,15 +173,15 @@ export const translations = {
       admin: "Kommandozentrale",
       logout: "Abmelden",
       login: "Anmelden",
-      signup: "BSt Beitreten",
+      signup: "BST HUB Beitreten",
       ideas: "Globale Ideen",
       submit: "Projekt Einreichen"
     },
     hero: {
-      title: "Akademische Vorherrschaft",
-      subtitle: "Schließen Sie sich über 12.000 Studenten weltweit an, die BSt für erstklassige Aufgaben und Expertenberatung vertrauen.",
-      badge: "GLOBALE AKADEMISCHE EXZELLENZ",
-      ctaPrimary: "Projekt Starten",
+      title: "Akademisches Exzellenz-Zentrum",
+      subtitle: "Ihre zentrale Anlaufstelle für erstklassige Aufgaben, komplexe Abschlussarbeiten, Thesen und Expertendokumentation.",
+      badge: "BST HUB - ERFOLGSPORTAL FÜR STUDENTEN",
+      ctaPrimary: "Aufgabe Einreichen",
       ctaSecondary: "Ideen Durchsuchen"
     },
     dashboard: {
@@ -256,15 +256,15 @@ export const translations = {
       admin: "مركز القيادة",
       logout: "تسجيل الخروج",
       login: "تسجيل الدخول",
-      signup: "انضم إلى BSt",
+      signup: "انضم إلى BST HUB",
       ideas: "أفكار عالمية",
       submit: "تقديم مشروع"
     },
     hero: {
-      title: "السيادة الأكاديمية",
-      subtitle: "انضم إلى أكثر من 12000 طالب حول العالم يثقون في BSt للحصول على مهام متميزة وتوجيهات بحثية خبيرة.",
-      badge: "التميز الأكاديمي العالمي",
-      ctaPrimary: "ابدأ مشروعك",
+      title: "مركز التميز الأكاديمي",
+      subtitle: "وجهتك الشاملة للمهام المتميزة، ومشاريع التخرج المعقدة، والأطروحات، والتوثيق المتخصص.",
+      badge: "BST HUB - بوابة نجاح الطلاب",
+      ctaPrimary: "تقديم مهمتك",
       ctaSecondary: "تصفح الأفكار"
     },
     dashboard: {

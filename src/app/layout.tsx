@@ -7,6 +7,7 @@ import TechBackground from "@/components/TechBackground";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SoftwareHouseButton from "@/components/SoftwareHouseButton";
 import { LanguageProvider } from "@/context/LanguageContext";
+import LayoutContent from "@/components/LayoutContent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BSt - BoardSolutionTech | Academic Guidance",
-  description: "Platform for assignments, projects, and academic assistance.",
+  title: "BST HUB | Assignments, Projects & Thesis",
+  description: "Your all-in-one hub for assignments, final year projects, thesis documentation, and academic assistance.",
   other: {
     "csp-header": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;",
     "x-frame-options": "DENY",
@@ -45,12 +46,9 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100"
       >
         <LanguageProvider>
-          <TechBackground />
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppButton />
-          <SoftwareHouseButton />
+          <LayoutContent>
+            {children}
+          </LayoutContent>
         </LanguageProvider>
       </body>
     </html>

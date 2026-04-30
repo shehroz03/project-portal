@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const { to, subject, html } = await request.json();
 
     const { data, error } = await resend.emails.send({
-      from: 'BSt Studio <onboarding@resend.dev>',
+      from: 'BST HUB <onboarding@resend.dev>',
       to,
       subject,
       html,

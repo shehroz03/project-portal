@@ -13,11 +13,11 @@ export default function Footer() {
                 <BookOpen size={20} className="text-white" />
               </div>
               <span className="font-black text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500">
-                BSt Studio
+                BST HUB
               </span>
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
-              Elevating academic standards worldwide. Specialized assistance for IGCSE, A-Levels, Undergraduate, and Research levels.
+              Your comprehensive hub for assignments, final year projects, thesis documentation, and academic research guidance at all educational levels.
             </p>
             <div className="flex items-center gap-4">
                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-500 text-[10px] font-black uppercase tracking-widest border border-green-500/20">
@@ -79,7 +79,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-gray-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">
-            © {new Date().getFullYear()} BST STUDIO · ACADEMIC SUPREMACY
+            © {new Date().getFullYear()} BST HUB · ACADEMIC SUPREMACY
           </p>
           <div className="flex gap-8">
             <span className="text-[10px] font-black uppercase tracking-widest text-gray-500 cursor-pointer hover:text-purple-600">Privacy Policy</span>

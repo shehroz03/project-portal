@@ -145,9 +145,9 @@ export default function DashboardPage() {
         animate={{ x: 0, opacity: 1 }}
         className="w-20 md:w-72 bg-black/90 backdrop-blur-3xl border-r border-white/5 flex flex-col p-4 md:p-6 h-screen z-50 shrink-0"
       >
-        <div className="mb-12 flex items-center gap-3 px-2">
+        <div className="mb-6 flex items-center gap-3 px-2">
            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center text-white font-black text-xl shadow-2xl shadow-purple-500/40">B</div>
-           <span className="hidden md:block font-black text-xl tracking-tighter text-white">BSt <span className="text-purple-500">STUDIO</span></span>
+           <span className="hidden md:block font-black text-xl tracking-tighter text-white">BST <span className="text-purple-500">HUB</span></span>
         </div>
 
         <nav className="flex-1 space-y-2">
@@ -206,7 +206,7 @@ export default function DashboardPage() {
           ))}
         </nav>
 
-        <button onClick={() => supabase.auth.signOut().then(() => router.push('/login'))} className="flex items-center gap-4 p-4 text-red-500 hover:bg-red-500/10 rounded-2xl font-black transition-all mt-auto border border-red-500/20 uppercase text-[9px] tracking-widest">
+        <button onClick={() => supabase.auth.signOut().then(() => router.push('/login'))} className="flex items-center gap-4 p-4 text-red-500 hover:bg-red-500/10 rounded-2xl font-black transition-all mt-auto mb-6 border border-red-500/20 uppercase text-[9px] tracking-widest">
           <LogOut size={18} />
           <span className="hidden md:block">{t.nav.logout}</span>
         </button>
