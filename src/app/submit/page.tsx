@@ -159,13 +159,23 @@ export default function SubmitRequestPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">{t.submit.formTitle}</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">
+                  {formData.type === 'assignment' ? 'Assignment Name' : 
+                   formData.type === 'fyp' ? 'Project Title' : 
+                   formData.type === 'thesis' ? 'Thesis Topic' : 
+                   'Idea/Concept Name'}
+                </label>
                 <div className="relative">
                   <AlignLeft size={18} className="absolute left-6 top-1/2 -translate-y-1/2 text-purple-500" />
                   <input
                     required
                     className="w-full pl-16 pr-8 py-5 bg-gray-50 dark:bg-gray-800/50 border-none rounded-3xl focus:ring-2 focus:ring-purple-500 outline-none transition-all font-bold text-sm"
-                    placeholder="e.g. Adv. Algorithms Assignment 4"
+                    placeholder={
+                      formData.type === 'assignment' ? 'e.g. Adv. Algorithms Assignment 4' : 
+                      formData.type === 'fyp' ? 'e.g. AI-Powered Healthcare Dashboard' : 
+                      formData.type === 'thesis' ? 'e.g. Impact of Blockchain on Supply Chain' : 
+                      'e.g. SaaS Startup for Students'
+                    }
                     value={formData.title}
                     onChange={e => setFormData({...formData, title: e.target.value})}
                   />
@@ -187,10 +197,20 @@ export default function SubmitRequestPage() {
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Special Constraints</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">
+                  {formData.type === 'assignment' ? 'Special Constraints' : 
+                   formData.type === 'fyp' ? 'Technical Stack' : 
+                   formData.type === 'thesis' ? 'Research Guidelines' : 
+                   'Consultation Goals'}
+                </label>
                 <input
                   className="w-full px-8 py-5 bg-gray-50 dark:bg-gray-800/50 border-none rounded-3xl focus:ring-2 focus:ring-purple-500 outline-none transition-all font-bold text-sm"
-                  placeholder="e.g. Use IEEE citation format..."
+                  placeholder={
+                    formData.type === 'assignment' ? 'e.g. Use IEEE citation format...' : 
+                    formData.type === 'fyp' ? 'e.g. Next.js, Python, or specific hardware...' : 
+                    formData.type === 'thesis' ? 'e.g. Minimum 10,000 words, APA style...' : 
+                    'e.g. Need help with monetization or UI design...'
+                  }
                   value={formData.instructions}
                   onChange={e => setFormData({...formData, instructions: e.target.value})}
                 />
@@ -199,12 +219,19 @@ export default function SubmitRequestPage() {
 
             <div className="space-y-8">
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">{t.submit.formDesc}</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">
+                  {formData.type === 'idea' ? 'Tell us more about your idea' : t.submit.formDesc}
+                </label>
                 <textarea
                   required
                   rows={8}
                   className="w-full px-8 py-6 bg-gray-50 dark:bg-gray-800/50 border-none rounded-3xl focus:ring-2 focus:ring-purple-500 outline-none transition-all resize-none font-medium text-sm leading-relaxed"
-                  placeholder="Elaborate on your project requirements, goals, and technical stack..."
+                  placeholder={
+                    formData.type === 'assignment' ? 'List the assignment questions or specific tasks you need help with...' : 
+                    formData.type === 'fyp' ? 'Describe your final year project requirements, core features, and goals...' : 
+                    formData.type === 'thesis' ? 'Elaborate on your research objectives, methodology, and key focus areas...' : 
+                    'Share your initial thoughts, the problem you want to solve, or what you hope to achieve...'
+                  }
                   value={formData.description}
                   onChange={e => setFormData({...formData, description: e.target.value})}
                 />
@@ -222,7 +249,12 @@ export default function SubmitRequestPage() {
                     <PlusCircle size={32} />
                   </div>
                   <p className="text-sm font-black uppercase tracking-widest text-gray-700 dark:text-gray-300">
-                    {file ? file.name : 'Ingest Project Data'}
+                    {file ? file.name : (
+                      formData.type === 'assignment' ? 'Ingest Assignment Brief' :
+                      formData.type === 'fyp' ? 'Ingest Project Data' :
+                      formData.type === 'thesis' ? 'Ingest Research Proposal' :
+                      'Ingest Idea Summary'
+                    )}
                   </p>
                   <p className="text-[10px] font-bold text-gray-400 mt-2">Maximum payload: 50MB</p>
                 </div>
