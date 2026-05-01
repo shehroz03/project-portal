@@ -1,3 +1,4 @@
+# Final deployment trigger - Secrets are now set
 name: Deploy to Hostinger
 
 on:
