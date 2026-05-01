@@ -47,5 +47,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME_STUDENT }}
           password: ${{ secrets.FTP_PASSWORD_STUDENT }}
           local-dir: ./deploy/
-          server-dir: public_html
+          server-dir: public_html/
           dangerous-clean-slate: true
