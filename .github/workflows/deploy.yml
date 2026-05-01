@@ -33,7 +33,7 @@ jobs:
       # Prepare standalone deploy folder
       - name: Prepare deployment package
         run: |
-          mkdir -p deploy
+          mkdir -p deploy/.next
           cp -r .next/standalone/* deploy/
           cp -r .next/static deploy/.next/static
           cp -r public deploy/public
